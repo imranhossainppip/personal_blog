@@ -13,4 +13,9 @@ Route::get('/single','FrontController@single');
 
 //Admin Route Here----------
 Route::get('/home','AdminController@index');
-Route::get('/home','AdminController@index');
+Route::resource('category','CategoryController');
+Route::get('/category_view/{id}','CategoryController@category_view')->name('category_view');
+Route::get('category_edit/{id}','CategoryController@category_edit')->name('category_edit');
+Route::get('category_destroy/{id}','CategoryController@category_destroy')->name('category_destroy');
+Route::post('category_update/{id}','CategoryController@category_update');
+

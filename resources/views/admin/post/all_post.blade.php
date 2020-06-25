@@ -35,9 +35,10 @@
                                         <thead>
                                         <tr>
                                             <th style="width: 10px">ID</th>
-                                            <th>Name</th>
-                                            <th>Slug</th>
-                                            <th>Post Count</th>
+                                            <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Author</th>
                                             <th style="width: 40px">Action</th>
                                         </tr>
                                         </thead>
@@ -46,17 +47,18 @@
                                           @foreach($posts as $post)
                                         <tr>
                                             <td>{{$post->id}}</td>
-                                            <td>{{$post->name}}</td>
-                                            <td>{{$post->slug}}</td>
-                                            <td><span class="badge bg-warning">70%</span></td>
+                                            <td><img src="{{url($post->image)}}" width="50" height="50"></td>
+                                            <td>{{$post->title}}</td>
+                                            <td>{{$post->category->name}}</td>
+                                            <td>{{$post->user->name}}</td>
                                             <td class="d-flex">
-                                            <a class="btn btn-info btn-sm mr-1" href="{{route('post_view',$post->id)}}">
+                                            <a class="btn btn-info btn-sm mr-1" href="">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a class="btn btn-success btn-sm mr-1" href="{{route('post_edit',$post->id)}}">
+                                            <a class="btn btn-success btn-sm mr-1" href="{{route('edit_post' ,$post->id)}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-danger btn-sm mr-1" id="delete" href="{{route('post_destroy',$post->id)}}">
+                                            <a class="btn btn-danger btn-sm mr-1" id="delete" href="{{route('delete_post' ,$post->id)}}">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                             </td>
@@ -64,7 +66,7 @@
                                           @endforeach
                                         @else
                                             <tr>
-                                                <td colspan="5">
+                                                <td colspan="7">
                                                     <h5 style="text-align: center;color: red">No Post Found Here</h5>
                                                 </td>
                                             </tr>

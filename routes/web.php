@@ -28,6 +28,10 @@ Route::get('delete_tag{id}','TagController@delete_tag')->name('delete_tag');
 Route::post('update_tag{id}','TagController@update_tag')->name('update_tag');
 
 //Post Route Here-----
-Route::get('all_posts','PostController@all_post')->name('all_post');
-Route::get('add_posts','PostController@add_posts')->name('add_post');
+Route::get('all_post','PostController@all_post')->name('all_post');
+Route::get('add_post','PostController@add_post')->name('add_post');
+Route::post('save_post','PostController@save_post')->name('save_post');
+Route::get('edit_post/{id}','PostController@edit_post')->name('edit_post');
+Route::post('update_post/{id}','PostController@update_post')->name('update_post');
+Route::get('delete_post/{id}','PostController@delete_post')->name('delete_post');
 

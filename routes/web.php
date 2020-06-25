@@ -19,3 +19,15 @@ Route::get('category_edit/{id}','CategoryController@category_edit')->name('categ
 Route::get('category_destroy/{id}','CategoryController@category_destroy')->name('category_destroy');
 Route::post('category_update/{id}','CategoryController@category_update');
 
+//Tags Route Here--------------
+Route::get('all_tags','TagController@all_tags')->name('all_tags');
+Route::get('add_tag','TagController@add_tag')->name('add_tag');
+Route::post('save_tag','TagController@save_tag')->name('save_tag');
+Route::get('edit_tag/{id}','TagController@edit_tag')->name('edit_tag');
+Route::get('delete_tag{id}','TagController@delete_tag')->name('delete_tag');
+Route::post('update_tag{id}','TagController@update_tag')->name('update_tag');
+
+//Post Route Here-----
+Route::get('all_posts','PostController@all_post')->name('all_post');
+Route::get('add_posts','PostController@add_posts')->name('add_post');
+

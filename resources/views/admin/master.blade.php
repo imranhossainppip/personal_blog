@@ -136,6 +136,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     <li class="nav-item mt-auto">
+                        <a href="{{ route('all_tags') }}" class="nav-link {{ (request()->is('admin/category*')) ? 'active': '' }}">
+                            <i class="nav-icon fas fa-tag"></i>
+                            <p>
+                                Tag
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item mt-auto">
+                        <a href="{{ route('all_post') }}" class="nav-link {{ (request()->is('admin/category*')) ? 'active': '' }}">
+                            <i class="nav-icon fas fa-blog"></i>
+                            <p>
+                                Post
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item mt-auto">
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>

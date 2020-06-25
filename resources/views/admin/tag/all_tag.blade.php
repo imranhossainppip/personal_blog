@@ -1,18 +1,18 @@
 @extends('admin.master')
 @section('title')
-    All Category
+    All Tag
 @endsection
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Category List</h1>
+                    <h1 class="m-0 text-dark">Tag List</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/home')}}">Home</a></li>
-                        <li class="breadcrumb-item">Category</li>
+                        <li class="breadcrumb-item">Tag</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,8 +24,8 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Category List</h5>
-                            <a href="{{route('category.create')}}" class="btn btn-info float-right">Create Category</a>
+                            <h5 class="card-title">Tag List</h5>
+                            <a href="{{route('add_tag')}}" class="btn btn-info float-right">Create Tag</a>
                         </div>
                         <div>
                             <div class="card">
@@ -42,21 +42,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @if($categories->count() > 0)
-                                          @foreach($categories as $category)
+                                        @if($tags->count() > 0)
+                                          @foreach($tags as $tag)
                                         <tr>
-                                            <td>{{$category->id}}</td>
-                                            <td>{{$category->name}}</td>
-                                            <td>{{$category->slug}}</td>
-                                            <td><span class="badge bg-warning">70%</span></td>
+                                            <td>{{$tag->id}}</td>
+                                            <td>{{$tag->name}}</td>
+                                            <td>{{$tag->slug}}</td>
+                                            <td>{{$tag->description}}</td>
                                             <td class="d-flex">
-                                            <a class="btn btn-info btn-sm mr-1" href="{{route('category_view',$category->id)}}">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a class="btn btn-success btn-sm mr-1" href="{{route('category_edit',$category->id)}}">
+{{--                                            <a class="btn btn-info btn-sm mr-1" href="{{route('category_view',$category->id)}}">--}}
+{{--                                                <i class="fas fa-eye"></i>--}}
+{{--                                            </a>--}}
+                                            <a class="btn btn-success btn-sm mr-1" href="{{route('edit_tag',$tag->id)}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-danger btn-sm mr-1" id="delete" href="{{route('category_destroy',$category->id)}}">
+                                            <a class="btn btn-danger btn-sm mr-1" id="delete" href="{{route('delete_tag',$tag->id)}}">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                             </td>
@@ -65,7 +65,7 @@
                                         @else
                                             <tr>
                                                 <td colspan="5">
-                                                    <h5 style="text-align: center;color: red">No Categories Found Here</h5>
+                                                    <h5 style="text-align: center; color: red">No Tags Found Here</h5>
                                                 </td>
                                             </tr>
                                             @endif

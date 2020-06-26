@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,7 +16,8 @@ class PostController extends Controller
     }
     public function add_post(){
         $categories = Category::all();
-        return view('admin.post.add_post',compact('categories'));
+        $tags = Tag::all();
+        return view('admin.post.add_post',compact(['categories', 'tags']));
     }
     public function save_post(Request $request){
         $validatedData = $request->validate([
@@ -37,6 +39,7 @@ class PostController extends Controller
         $posts['category_id'] = $request['category_id'];
         $posts['user_id'] = auth()->user()->id;
         $posts['published_at'] = Carbon::now();
+        $posts->tags()->attach($request->tags);
         $posts->save();
         $notification = array(
             'message' => 'Post Saved Successfully',
